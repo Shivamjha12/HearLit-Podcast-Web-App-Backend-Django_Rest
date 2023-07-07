@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import podcast_data
+from .models import *
 
 class PopularPodcastSerializer(serializers.ModelSerializer):
     thumbnail = serializers.CharField(source="thumbnail.url")
@@ -11,3 +11,7 @@ class PopularPodcastSerializer(serializers.ModelSerializer):
 
 class FavouritePodcastSerializer(serializers.Serializer):
     is_favorite = serializers.BooleanField()
+class getPodcast(serializers.Serializer):
+    class Meta:
+        model = Favorite_podcast
+        fields = ['__all__']

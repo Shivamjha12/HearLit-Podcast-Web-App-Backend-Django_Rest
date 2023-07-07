@@ -31,15 +31,20 @@ class login(APIView):
         token = jwt.encode(payload,'secret',algorithm='HS256')
         # .decode('utf-8')
         response = Response()
-        response.set_cookie(key='jwt',value=token, httponly=True)
+        # response.set_cookie(key='jwt',value=token, httponly=True)
         response.data = {
             'jwt':token
         }
         return response
 
 class userView(APIView):
-    def get(self, request):
-        token = request.COOKIES.get('jwt')
+    def get(self, request,JWTUser):
+        token = None
+        if JWTUser!='None':
+            token = JWTUser
+        # request.COOKIES.get('jwt')
+        print(type(token),"typeeeeeeeeeeeeeeeeeeeeeeeeee")
+        print(token,"Here is the token, -----------sssssssssssss-----s-s--s-s-sssssssss")
         if not token:
             raise AuthenticationFailed('Unauthenticated please login')
         try:
@@ -54,7 +59,7 @@ class userView(APIView):
 class logout(APIView):
     def post(self, request):
         response = Response()
-        response.delete_cookie('jwt')
+        # response.delete_cookie('jwt')
         response.data = {
             'message':"Successfully Logout"
         }
