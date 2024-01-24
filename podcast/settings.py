@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-dons^6$*fzo31g76yk2&%p14avt51ka!8_j4gzm-$mimgt5h22
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['hearlitpodcast.onrender.com']
 
 # Application definition
 
